@@ -191,8 +191,8 @@ def get_progress_bar_string(pct):
         100
     )
     cFull = int(p // 10)
-    p_str = "⚪" * cFull
-    p_str += "⚫" * (10 - cFull)
+    p_str = "🟩" * cFull
+    p_str += "🟨" * (10 - cFull)
     return f"{p_str}"
 
 

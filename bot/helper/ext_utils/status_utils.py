@@ -312,15 +312,15 @@ async def get_readable_message(
             )
         else:
             msg += (
-                f"\n<code>Status :</code> <b>{tstatus}</b>"
-                f"\n<code>Size   :</code> {task.size()}"
-                f"\n<code>Upload :</code> {task.listener.mode}"
-                f"\n<code>Past   :</code> {elapsed}"
-                f"\n<code>User   :</code> {user_tag}"
-                f"\n<code>UserID :</code> ||{task.listener.user_id}||"
-                f"\n<code>Engine :</code> {task.engine}"
+                f"\n<code>•Status :</code> <b>{tstatus}</b>"
+                f"\n<code>•Size   :</code> {task.size()}"
+                f"\n<code>•Upload :</code> {task.listener.mode}"
+                f"\n<code>•Past   :</code> {elapsed}"
+                f"\n<code>•User   :</code> {user_tag}"
+                f"\n<code>•UserID :</code> ||{task.listener.user_id}||"
+                f"\n<code>•Engine :</code> {task.engine}"
             )
-        msg += f"\n⚠️ {cancel_task}\n\n"
+        msg += f"\nCancel {cancel_task}\n\n"
 
     if len(msg) == 0:
         if status == "All":

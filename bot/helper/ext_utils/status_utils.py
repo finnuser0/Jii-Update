@@ -279,7 +279,7 @@ async def get_readable_message(
                 f"\n<code>𖹭Done   :</code> {task.processed_bytes()} of {task.size()}"
                 f"\n<code>𖹭Speed  :</code> {task.speed()}"
                 f"\n<code>𖹭ETA    :</code> {task.eta()}"
-                f"\n<code𖹭Past   :</code> {elapsed}"
+                f"\n<code>𖹭Past   :</code> {elapsed}"
                 f"\n<code>𖹭User   :</code> <b>{user_tag}</b>"
                 f"\n<code>𖹭UserID :</code> ||{task.listener.user_id}||"
                 f"\n<code>𖹭Upload :</code> {task.listener.mode}"

@@ -275,15 +275,15 @@ async def get_readable_message(
             )
             msg += (
                 f"\n{get_progress_bar_string(progress)} » <b><i>{progress}</i></b>"
-                f"\n<code>🪐Status :</code> <b>{tstatus}</b>"
-                f"\n<code>✅Done   :</code> {task.processed_bytes()} of {task.size()}"
-                f"\n<code>⚡Speed  :</code> {task.speed()}"
-                f"\n<code>⏳ETA    :</code> {task.eta()}"
-                f"\n<code>⏱Past   :</code> {elapsed}"
-                f"\n<code>👤User   :</code> <b>{user_tag}</b>"
-                f"\n<code>🆔UserID :</code> ||{task.listener.user_id}||"
-                f"\n<code>🚦Upload :</code> {task.listener.mode}"
-                f"\n<code>🔧Engine :</code> <b><i>{task.engine}</i></b>"
+                f"\n<code>Status :</code> <b>{tstatus}</b>"
+                f"\n<code>𖹭Done   :</code> {task.processed_bytes()} of {task.size()}"
+                f"\n<code>𖹭Speed  :</code> {task.speed()}"
+                f"\n<code>𖹭ETA    :</code> {task.eta()}"
+                f"\n<code𖹭Past   :</code> {elapsed}"
+                f"\n<code>𖹭User   :</code> <b>{user_tag}</b>"
+                f"\n<code>𖹭UserID :</code> ||{task.listener.user_id}||"
+                f"\n<code>𖹭Upload :</code> {task.listener.mode}"
+                f"\n<code>𖹭Engine :</code> <b><i>{task.engine}</i></b>"
             )
             if hasattr(
                 task,
@@ -320,7 +320,7 @@ async def get_readable_message(
                 f"\n<code>UserID :</code> ||{task.listener.user_id}||"
                 f"\n<code>Engine :</code> {task.engine}"
             )
-        msg += f"\n⚠️ {cancel_task}\n\n"
+        msg += f"\nCancel Task⚠️: {cancel_task}\n\n"
 
     if len(msg) == 0:
         if status == "All":

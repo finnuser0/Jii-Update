@@ -252,14 +252,14 @@ async def get_readable_message(
             and int(config_dict["AUTO_DELETE_MESSAGE_DURATION"]) > 0
         ):
             msg += (
-                f"<b><i>\n#Nx{index + start_position}: "
+                f"<b><i>\n#NX{index + start_position}: "
                 f"{escape(f"{task.name()}")}\n</i></b>"
                 if elapse <= config_dict["AUTO_DELETE_MESSAGE_DURATION"]
-                else f"\n<b>#Nx{index + start_position}...(Processing)</b>"
+                else f"\n<b>#NX{index + start_position}...(🫂Processing)</b>"
             )
         else:
             msg += (
-                f"<b><i>\n#Nx{index + start_position}: "
+                f"<b><i>\n#NX{index + start_position}: "
                 f"{escape(f"{task.name()}")}\n</i></b>"
             )
         if tstatus not in [
@@ -275,15 +275,15 @@ async def get_readable_message(
             )
             msg += (
                 f"\n{get_progress_bar_string(progress)} » <b><i>{progress}</i></b>"
-                f"\n<code>Status :</code> <b>{tstatus}</b>"
-                f"\n<code>Done   :</code> {task.processed_bytes()} of {task.size()}"
-                f"\n<code>Speed  :</code> {task.speed()}"
-                f"\n<code>ETA    :</code> {task.eta()}"
-                f"\n<code>Past   :</code> {elapsed}"
-                f"\n<code>User   :</code> <b>{user_tag}</b>"
-                f"\n<code>UserID :</code> ||{task.listener.user_id}||"
-                f"\n<code>Upload :</code> {task.listener.mode}"
-                f"\n<code>Engine :</code> <b><i>{task.engine}</i></b>"
+                f"\n<code>🪐Status :</code> <b>{tstatus}</b>"
+                f"\n<code>✅Done   :</code> {task.processed_bytes()} of {task.size()}"
+                f"\n<code>⚡Speed  :</code> {task.speed()}"
+                f"\n<code>⏳ETA    :</code> {task.eta()}"
+                f"\n<code>⏱Past   :</code> {elapsed}"
+                f"\n<code>👤User   :</code> <b>{user_tag}</b>"
+                f"\n<code>🆔UserID :</code> ||{task.listener.user_id}||"
+                f"\n<code>🚦Upload :</code> {task.listener.mode}"
+                f"\n<code>🔧Engine :</code> <b><i>{task.engine}</i></b>"
             )
             if hasattr(
                 task,

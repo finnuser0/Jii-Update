@@ -320,7 +320,7 @@ async def get_readable_message(
                 f"\n<code>UserID :</code> ||{task.listener.user_id}||"
                 f"\n<code>Engine :</code> {task.engine}"
             )
-        msg += f"\nCancel Task⚠️: {cancel_task}\n\n"
+        msg += f"\nCancel ⚠️: {cancel_task}\n\n"
 
     if len(msg) == 0:
         if status == "All":

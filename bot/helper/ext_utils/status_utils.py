@@ -61,8 +61,7 @@ STATUSES = {
     "SP": MirrorStatus.STATUS_SPLITTING,
     "CK": MirrorStatus.STATUS_CHECKING,
     "SV": MirrorStatus.STATUS_SAMVID,
-    "PA": MirrorStatus.STATUS_PAUSED,
-    "MD": MirrorStatus.STATUS_METADATA
+    "PA": MirrorStatus.STATUS_METADATA
 }
 
 
@@ -203,7 +202,7 @@ async def get_readable_message(
         status="All",
         page_step=1
     ):
-    msg = ""
+    msg = "ᴘᴏᴡᴇʀᴅ ʙʏ NxLᴇᴇᴄʜ\n\n"
     button = None
 
     tasks = await sync_to_async(
@@ -242,87 +241,31 @@ async def get_readable_message(
         )
         user_tag = task.listener.tag.replace("@", "").replace("_", " ")
         cancel_task = (
-            f"<code>/{BotCommands.CancelTaskCommand[1]} {task.gid()}</code>"
-            if not task.listener.get_chat.has_protected_content
-            else f"<b>/{BotCommands.CancelTaskCommand[1]}_{task.gid()}</b>"
+            f"/A {task.gid()}"
         )
 
-        if (
-            config_dict["DELETE_LINKS"]
-            and int(config_dict["AUTO_DELETE_MESSAGE_DURATION"]) > 0
-        ):
-            msg += (
-                f"<b><i>\n#NX{index + start_position}: "
-                f"{escape(f"{task.name()}")}\n</i></b>"
-                if elapse <= config_dict["AUTO_DELETE_MESSAGE_DURATION"]
-                else f"\n<b>#NX{index + start_position}...(🫂Processing)</b>"
-            )
-        else:
-            msg += (
-                f"<b><i>\n#NX{index + start_position}: "
-                f"{escape(f"{task.name()}")}\n</i></b>"
-            )
-        if tstatus not in [
-            MirrorStatus.STATUS_SEEDING,
-            MirrorStatus.STATUS_QUEUEDL,
-            MirrorStatus.STATUS_QUEUEUP,
-            MirrorStatus.STATUS_METADATA
-        ]:
-            progress = (
+        progress = (
                 await task.progress()
                 if iscoroutinefunction(task.progress)
                 else task.progress()
             )
-            msg += (
-                f"\n{get_progress_bar_string(progress)} » <b><i>{progress}</i></b>"
-                f"\n<code>Status :</code> <b>{tstatus}</b>"
-                f"\n<code>𖹭Done   :</code> {task.processed_bytes()} of {task.size()}"
-                f"\n<code>𖹭Speed  :</code> {task.speed()}"
-                f"\n<code>𖹭ETA    :</code> {task.eta()}"
-                f"\n<code>𖹭Past   :</code> {elapsed}"
-                f"\n<code>𖹭User   :</code> <b>{user_tag}</b>"
-                f"\n<code>𖹭UserID :</code> ||{task.listener.user_id}||"
-                f"\n<code>𖹭Upload :</code> {task.listener.mode}"
-                f"\n<code>𖹭Engine :</code> <b><i>{task.engine}</i></b>"
-            )
-            if hasattr(
-                task,
-                "playList"
-            ):
-                try:
-                    if playlist := task.playList():
-                        msg += f"\n<code>YtList :</code> {playlist}"
-                except:
-                    pass
-            if hasattr(
-                task,
-                "seeders_num"
-            ):
-                try:
-                    msg += f"\n<code>S/L    :</code> {task.seeders_num()}/{task.leechers_num()}"
-                except:
-                    pass
-        elif tstatus == MirrorStatus.STATUS_SEEDING:
-            msg += (
-                f"\n<code>Size   : </code>{task.size()}"
-                f"\n<code>Speed  : </code>{task.seed_speed()}"
-                f"\n<code>Upload : </code>{task.uploaded_bytes()}"
-                f"\n<code>Ratio  : </code>{task.ratio()}"
-                f"\n<code>Time   : </code>{task.seeding_time()}"
-            )
-        else:
-            msg += (
-                f"\n<code>Status :</code> <b>{tstatus}</b>"
-                f"\n<code>Size   :</code> {task.size()}"
-                f"\n<code>Upload :</code> {task.listener.mode}"
-                f"\n<code>Past   :</code> {elapsed}"
-                f"\n<code>User   :</code> {user_tag}"
-                f"\n<code>UserID :</code> ||{task.listener.user_id}||"
-                f"\n<code>Engine :</code> {task.engine}"
-            )
-        msg += f"\nCancel ⚠️: {cancel_task}\n\n"
 
-    if len(msg) == 0:
+        msg += (
+                f"#NX{index + start_position}: {escape(f'{task.name()}')}\n\n"
+                f"{get_progress_bar_string(progress)} » {progress}\n"
+                f"├Status : {tstatus}\n"
+                f"├Done   : {task.processed_bytes()} of {task.size()}\n"
+                f"├Speed  : {task.speed()}\n"
+                f"├ETA    : {task.eta()}\n"
+                f"├Past   : {elapsed}\n"
+                f"├User   : {user_tag}\n"
+                f"├UserID : {task.listener.user_id}\n"
+                f"├Upload : {task.listener.mode}\n"
+                f"├Engine : {task.engine}\n"
+                f"Cancel {cancel_task}\n\n"
+            )
+
+    if len(msg) == len("ᴘᴏᴡᴇʀᴅ ʙʏ NxLᴇᴇᴄʜ\n\n"):
         if status == "All":
             return (
                 None,
@@ -349,7 +292,7 @@ async def get_readable_message(
             position="footer"
         )
     if len(tasks) > STATUS_LIMIT:
-        msg += f"<b>Tasks:</b> {tasks_no} | <b>Step:</b> {page_step}\n"
+        msg += f"Tasks: {tasks_no} | Step: {page_step}\n"
         buttons.data_button(
             "⫷",
             f"status {sid} pre",
@@ -380,7 +323,7 @@ async def get_readable_message(
                     f"status {sid} ps {i}"
                 )
     if (
-        status != "All" or
+        status != "All" and
         tasks_no > 20
     ):
         for (
@@ -395,10 +338,10 @@ async def get_readable_message(
     button = buttons.build_menu(8)
     msg += (
         "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
-        f"<b>CPU</b>: {cpu_percent()}% | "
-        f"<b>FREE</b>: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
-        f"<b>RAM</b>: {virtual_memory().percent}% | "
-        f"<b>UPTM</b>: {get_readable_time(time() - bot_start_time)}"
+        f"CPU: {cpu_percent()}% | "
+        f"FREE: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
+        f"RAM: {virtual_memory().percent}% | "
+        f"UPTM: {get_readable_time(time() - bot_start_time)}"
     )
     remaining_time = 86400 - (time() - bot_start_time)
     if remaining_time < 3600:
@@ -410,3 +353,4 @@ async def get_readable_message(
         msg,
         button
     )
+    

@@ -1,4 +1,3 @@
-
 from html import escape
 from math import e
 from psutil import (
@@ -191,8 +190,8 @@ def get_progress_bar_string(pct):
         100
     )
     cFull = int(p // 10)
-    p_str = "🟩" * cFull
-    p_str += "🟨" * (10 - cFull)
+    p_str = "⬤" * cFull
+    p_str += "○" * (10 - cFull)
     return f"{p_str}"
 
 
@@ -242,7 +241,7 @@ async def get_readable_message(
         )
         user_tag = task.listener.tag.replace("@", "").replace("_", " ")
         cancel_task = (
-            f"/A {task.gid()}"
+            f"/c {task.gid()}"
         )
 
         progress = (
@@ -252,18 +251,18 @@ async def get_readable_message(
             )
 
         msg += (
-                f"#NX{index + start_position}: `{escape(f'{task.name()}')}`\n\n"
+                f"#{index + start_position}: `{escape(f'{task.name()}')}`\n\n"
                 f"{get_progress_bar_string(progress)} » {progress}\n"
-                f"├Status : {tstatus}\n"
-                f"├Done   : {task.processed_bytes()} of {task.size()}\n"
-                f"├Speed  : {task.speed()}\n"
-                f"├ETA    : {task.eta()}\n"
-                f"├Past   : {elapsed}\n"
-                f"├User   : {user_tag}\n"
-                f"├UserID : {task.listener.user_id}\n"
-                f"├Upload : {task.listener.mode}\n"
-                f"├Engine : {task.engine}\n"
-                f"Cancel {cancel_task}\n\n"
+                f"├✺ : {tstatus}\n"
+                f"├Pʀᴏᴄᴇssᴇᴅ   : {task.processed_bytes()} of {task.size()}\n"
+                f"├Sᴘᴇᴇᴅ  : {task.speed()}\n"
+                f"├Esᴛɪᴍᴀᴛᴇᴅ    : {task.eta()}\n"
+                f"├Eʟᴀᴘsᴇᴅ   : {elapsed}\n"
+                f"├Usᴇʀ   : {user_tag}\n"
+                f"├ID : {task.listener.user_id}\n"
+                f"├Uᴘʟᴏᴀᴅ : {task.listener.mode}\n"
+                f"├Tᴏᴏʟ : {task.engine}\n"
+                f"Sᴛᴏᴘ {cancel_task}\n\n"
             )
 
     if len(msg) == len("ᴘᴏᴡᴇʀᴅ ʙʏ <a href='https://t.me/NxLeech'>NxLᴇᴇᴄʜ</a>\n\n"):
@@ -283,12 +282,12 @@ async def get_readable_message(
         )
     if not is_user:
         buttons.data_button(
-            "ᴛᴀsᴋs\nɪɴғᴏ",
+            "ɪɴғᴏ\n🧩",
             f"status {sid} ov",
             position="footer"
         )
         buttons.data_button(
-            "sʏsᴛᴇᴍ\nɪɴғᴏ",
+            "sʏsᴛᴇᴍ\n⚡",
             f"status {sid} stats",
             position="footer"
         )
@@ -339,17 +338,17 @@ async def get_readable_message(
     button = buttons.build_menu(8)
     msg += (
         "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
-        f"CPU: {cpu_percent()}% | "
-        f"FREE: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
-        f"RAM: {virtual_memory().percent}% | "
-        f"UPTM: {get_readable_time(time() - bot_start_time)}"
+        f"🖥️CPU: {cpu_percent()}% | "
+        f"💿FREE: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
+        f"💾RAM: {virtual_memory().percent}% | "
+        f"🕒UPTM: {get_readable_time(time() - bot_start_time)}"
     )
     remaining_time = 86400 - (time() - bot_start_time)
     if remaining_time < 3600:
         if remaining_time > 0:
             msg += f"\n\n<b><i>Bot Restarts In: {get_readable_time(remaining_time)}</i></b>"
         else:
-            msg += f"\n\n<b><i>⚠️ BOT WILL RESTART ANYTIME ⚠️</i></b>"
+            msg += f"\n\n<b><i>⚠️ ALERT BOT WILL RESTART ANYTIME ⚠️</i></b>"
     return (
         msg,
         button

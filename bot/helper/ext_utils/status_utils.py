@@ -252,19 +252,19 @@ async def get_readable_message(
             )
 
         msg += (
-                f"\\#NX{index + start_position}: `"{escape(task.name())}`\n\n"
-                f"{get_progress_bar_string(progress)} » {progress}\n"
-                f"├Status : {tstatus}\n"
-                f"├Done   : {task.processed_bytes()} of {task.size()}\n"
-                f"├Speed  : {task.speed()}\n"
-                f"├ETA    : {task.eta()}\n"
-                f"├Past   : {elapsed}\n"
-                f"├User   : {user_tag}\n"
-                f"├UserID : {task.listener.user_id}\n"
-                f"├Upload : {task.listener.mode}\n"
-                f"├Engine : {task.engine}\n"
-                f"Cancel {cancel_task}\n\n"
-            )
+    f"\\#NX{index + start_position}: `{escape(task.name())}`\n\n"
+    f"{get_progress_bar_string(progress)} » {progress}\n"
+    f"├Status : {tstatus}\n"
+    f"├Done   : {task.processed_bytes()} of {task.size()}\n"
+    f"├Speed  : {task.speed()}\n"
+    f"├ETA    : {task.eta()}\n"
+    f"├Past   : {elapsed}\n"
+    f"├User   : {user_tag}\n"
+    f"├UserID : {task.listener.user_id}\n"
+    f"├Upload : {task.listener.mode}\n"
+    f"├Engine : {task.engine}\n"
+    f"Cancel {cancel_task}\n\n"
+        )
 
     if len(msg) == len("ᴘᴏᴡᴇʀᴅ ʙʏ <a href='https://t.me/NxLeech'>NxLᴇᴇᴄʜ</a>\n\n"):
         if status == "All":

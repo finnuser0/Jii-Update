@@ -341,7 +341,7 @@ async def get_readable_message(
         "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
         f"CPU: {cpu_percent()}% | "
         f"FREE: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
-        f"RAM: {virtual_memory().percent()}% | "
+        f"RAM: {virtual_memory().percent}% | "
         f"UPTM: {get_readable_time(time() - bot_start_time)}"
     )
     remaining_time = 86400 - (time() - bot_start_time)
@@ -353,5 +353,5 @@ async def get_readable_message(
     return (
         msg,
         button
-        )
+    )
         

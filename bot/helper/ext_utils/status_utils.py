@@ -252,7 +252,7 @@ async def get_readable_message(
             )
 
         msg += (
-                f"#NX{index + start_position}: \"{escape(f'{task.name()}')}\"\n\n"
+                f"#NX{index + start_position}: `{escape(f'{task.name()}')}`\n\n"
                 f"{get_progress_bar_string(progress)} » {progress}\n"
                 f"├Status : {tstatus}\n"
                 f"├Done   : {task.processed_bytes()} of {task.size()}\n"
@@ -341,7 +341,7 @@ async def get_readable_message(
         "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
         f"CPU: {cpu_percent()}% | "
         f"FREE: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
-        f"RAM: {virtual_memory().percent}% | "
+        f"RAM: {virtual_memory().percent()}% | "
         f"UPTM: {get_readable_time(time() - bot_start_time)}"
     )
     remaining_time = 86400 - (time() - bot_start_time)

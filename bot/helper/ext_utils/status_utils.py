@@ -241,7 +241,7 @@ async def get_readable_message(
         )
         user_tag = task.listener.tag.replace("@", "").replace("_", " ")
         cancel_task = (
-            f"/c {task.gid()}"
+            f"/A {task.gid()}"
         )
 
         progress = (
@@ -262,7 +262,7 @@ async def get_readable_message(
                 f"├ID : {task.listener.user_id}\n"
                 f"├Uᴘʟᴏᴀᴅ : {task.listener.mode}\n"
                 f"├Tᴏᴏʟ : {task.engine}\n"
-                f"├Sᴛᴏᴘ : `{cancel_task.replace(' ', '')}`\n\n"
+                f"├Sᴛᴏᴘ : {cancel_task.replace(' ', '')}\n\n"
             )
 
     if len(msg) == len("ᴘᴏᴡᴇʀᴅ ʙʏ <a href='https://t.me/NxLeech'>NxLᴇᴇᴄʜ</a>\n\n"):

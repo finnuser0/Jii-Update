@@ -251,7 +251,7 @@ async def get_readable_message(
             )
 
         msg += (
-                f"#{index + start_position}: `{escape(f'{task.name()}')}`\n\n"
+                f"#NX{index + start_position}: `{escape(f'{task.name()}')}`\n\n"
                 f"{get_progress_bar_string(progress)} » {progress}\n"
                 f"├✺ : {tstatus}\n"
                 f"├Pʀᴏᴄᴇssᴇᴅ   : {task.processed_bytes()} of {task.size()}\n"

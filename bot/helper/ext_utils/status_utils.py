@@ -31,10 +31,10 @@ SIZE_UNITS = [
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Upload 📤"
-    STATUS_DOWNLOADING = "Download 📥"
+    STATUS_UPLOADING = "Upload ♨️"
+    STATUS_DOWNLOADING = "Download 🔰"
     STATUS_CLONING = "Clone 🔃"
-    STATUS_QUEUEDL = "QueueDL ⏳"
+    STATUS_QUEUEDL = "QueueDL ♻️"
     STATUS_QUEUEUP = "QueueUL ⏳"
     STATUS_PAUSED = "Paused ⛔️"
     STATUS_ARCHIVING = "Archive 🛠"
@@ -320,7 +320,7 @@ async def get_readable_message(
                 f"\n<code>•UserID :</code> ||{task.listener.user_id}||"
                 f"\n<code>•Engine :</code> {task.engine}"
             )
-        msg += f"\nCancel {cancel_task}\n\n"
+        msg += f"\nSᴛᴏᴘ {cancel_task}\n\n"
 
     if len(msg) == 0:
         if status == "All":
@@ -339,12 +339,12 @@ async def get_readable_message(
         )
     if not is_user:
         buttons.data_button(
-            "ɪɴғᴏ",
+            "ɪɴғᴏ🧩",
             f"status {sid} ov",
             position="footer"
         )
         buttons.data_button(
-            "sʏsᴛᴇᴍ",
+            "sʏsᴛᴇᴍ⚡",
             f"status {sid} stats",
             position="footer"
         )
@@ -395,17 +395,17 @@ async def get_readable_message(
     button = buttons.build_menu(8)
     msg += (
         "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
-        f"<b>CPU</b>: {cpu_percent()}% | "
-        f"<b>FREE</b>: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
-        f"<b>RAM</b>: {virtual_memory().percent}% | "
-        f"<b>UPTM</b>: {get_readable_time(time() - bot_start_time)}"
+        f"<b>🖥️CPU</b>: {cpu_percent()}% | "
+        f"<b>💿FREE</b>: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
+        f"<b>💾RAM</b>: {virtual_memory().percent}% | "
+        f"<b>🕒UPTM</b>: {get_readable_time(time() - bot_start_time)}"
     )
     remaining_time = 86400 - (time() - bot_start_time)
     if remaining_time < 3600:
         if remaining_time > 0:
             msg += f"\n\n<b><i>Bot Restarts In: {get_readable_time(remaining_time)}</i></b>"
         else:
-            msg += f"\n\n<b><i>⚠️ BOT WILL RESTART ANYTIME ⚠️</i></b>"
+            msg += f"\n\n<b><i>⚠️♨️ ALERT BOT WILL RESTART ANYTIME ♨️⚠️</i></b>"
     return (
         msg,
         button

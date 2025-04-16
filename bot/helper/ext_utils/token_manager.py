@@ -64,8 +64,8 @@ async def checking_access(user_id, button=None):
         if button is None:
             button = ButtonMaker()
         button.url_button(
-            "ɢᴇɴᴇʀᴀᴛᴇ\nɴᴇᴡ ᴛᴏᴋᴇɴ",
-            short_url(f"https://redirect.z-mirror.eu.org/{bot_name}/{token}")
+    "ɢᴇɴᴇʀᴀᴛᴇ\nɴᴇᴡ ᴛᴏᴋᴇɴ",
+    f"https://t.me/{bot_name}?start={token}"
         )
         tmsg = (
             "You need to generate a new <b>Token</b>."

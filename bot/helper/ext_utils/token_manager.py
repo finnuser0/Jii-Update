@@ -65,7 +65,7 @@ async def checking_access(user_id, button=None):
             button = ButtonMaker()
         button.url_button(
             "ɢᴇɴᴇʀᴀᴛᴇ\nɴᴇᴡ ᴛᴏᴋᴇɴ",
-            short_url(f"https://redirect.z-mirror.eu.org/{bot_name}/{token}")
+            short_url(f"https://nxredirectt-bb44c6aacac0.herokuapp.com/{bot_name}/{token}")
         )
         tmsg = (
             "You need to generate a new <b>Token</b>."

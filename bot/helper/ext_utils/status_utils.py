@@ -202,7 +202,7 @@ async def get_readable_message(
         status="All",
         page_step=1
     ):
-    msg = "ᴘᴏᴡᴇʀᴅ ʙʏ <a href='https://t.me/NxLeech'>NxLᴇᴇᴄʜ</a>\n\n"
+    msg = "ᴘᴏᴡᴇʀᴅ ʙʏ <a href='https://t.me/NxMirror'>NxMɪʀʀᴏʀ</a>\n\n"
     button = None
 
     tasks = await sync_to_async(
@@ -265,7 +265,7 @@ async def get_readable_message(
                 f"├Sᴛᴏᴘ : `{cancel_task}`\n\n"
             )
 
-    if len(msg) == len("ᴘᴏᴡᴇʀᴅ ʙʏ <a href='https://t.me/NxLeech'>NxLᴇᴇᴄʜ</a>\n\n"):
+    if len(msg) == len("ᴘᴏᴡᴇʀᴅ ʙʏ <a href='https://t.me/NxMirror'>NxMɪʀʀᴏʀ</a>\n\n"):
         if status == "All":
             return (
                 None,
